@@ -3,16 +3,34 @@
 namespace app\commands;
 
 use yii\console\Controller;
-
 use korkiss\taxi\GetTaxiServiceGet;
 use korkiss\taxi\GetTaxiWsdlClass;
 use korkiss\taxi\GetTaxiStructGetTaxiInfos;
 use korkiss\taxi\GetTaxiStructGetTaxiInfosRequest;
 use korkiss\taxi\GetTaxiStructGetTaxiInfosResponse;
 
-
 class CronController extends Controller
 {
+
+  private $regNumber = 'ем33377';
+
+  /**
+   * Create OK situation
+   */
+  public function actionEm33377()
+  {
+    $this->regNumber = 'ем33377';
+    $this->actionParseTaxi();
+  }
+  
+  /**
+   * Create FAIL situation
+   */
+  public function actionEm33378()
+  {
+    $this->regNumber = 'ем33378';
+    $this->actionParseTaxi();
+  }
 
   /**
    * Необходимо реализовать web-приложение, которое по крону будет выполнять 
@@ -20,15 +38,14 @@ class CronController extends Controller
    * результат сравнения, временем реакции (время выполнения запроса) и 
    * вердиктом (OK|FAIL) в базу.
    */
-  public function actionParseTaxi()
+  private function actionParseTaxi()
   {
-    $taxiRegNumber = 'ем33377';
     $getTaxiServiceGet = new GetTaxiServiceGet();
 
     $infoRequest = new GetTaxiStructGetTaxiInfosRequest();
 
     // Хардкодим и не заморачиваемся
-    $infoRequest->RegNum = $taxiRegNumber;
+    $infoRequest->RegNum = $this->regNumber;
 
     // Выполняем SOAP запрос
     $startTime = time();
@@ -51,8 +68,10 @@ class CronController extends Controller
 
       // Сравниваем с эталоном
       if ($obj == $objTest) {
+        echo "OK";
         $cronModel->result = true;
       } else {
+        echo "FAIL";
         $cronModel->result = false;
 
         $soapResponseContent = $getTaxiServiceGet->getLastResponse();
