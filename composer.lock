@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "c7937831cbd10e9bba4e9af08128900a",
-    "content-hash": "5438861ad666f7367e7d9ae0e539b7d0",
+    "hash": "e1fb230efad997291fe0122920cf1d0d",
+    "content-hash": "105c8f9bdfd7b4789db862ef22676336",
     "packages": [
         {
             "name": "bower-asset/bootstrap",
@@ -298,6 +298,44 @@
                 "html"
             ],
             "time": "2016-07-16 12:58:58"
+        },
+        {
+            "name": "korkiss/yii2-taxi-extension",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/korkiss/yii2-taxi-extension.git",
+                "reference": "1360b74310b27a656ff70b459fc7c9cb1340127c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/korkiss/yii2-taxi-extension/zipball/1360b74310b27a656ff70b459fc7c9cb1340127c",
+                "reference": "1360b74310b27a656ff70b459fc7c9cb1340127c",
+                "shasum": ""
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "korkiss\\taxi\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Boris Shutov",
+                    "email": "korkiss@gmail.com"
+                }
+            ],
+            "description": "Parser for Moscow taxi SOAP service",
+            "keywords": [
+                "moscow",
+                "taxi",
+                "yii2"
+            ],
+            "time": "2017-01-17 19:26:29"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -2846,7 +2884,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "korkiss/yii2-taxi-extension": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
