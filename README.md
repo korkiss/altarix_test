@@ -1,1 +1,1 @@
-# altarix_test
+Тестовое задание для Altarix
